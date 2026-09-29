@@ -15,6 +15,14 @@ try:
 except Exception:
     pass
 
+# Ensure compatibility with pyarrow and datasets
+try:
+    import pyarrow
+    if not hasattr(pyarrow, "PyExtensionType"):
+        pyarrow.PyExtensionType = getattr(pyarrow, "ExtensionType", None)
+except Exception:
+    pass
+
 try:
     from ragas import evaluate
     from ragas.metrics import faithfulness

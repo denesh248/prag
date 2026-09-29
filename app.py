@@ -5,6 +5,13 @@ try:
 except Exception:
     pass
 
+try:
+    import pyarrow
+    if not hasattr(pyarrow, "PyExtensionType"):
+        pyarrow.PyExtensionType = getattr(pyarrow, "ExtensionType", None)
+except Exception:
+    pass
+
 import os
 import io
 import time

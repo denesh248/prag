@@ -19,3 +19,4 @@ llm-guard
 langchain-groq
 ragas
 pysqlite3-binary
+pyarrow<=18.1.0
