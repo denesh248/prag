@@ -1,3 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+rich==13.9.4
+
 langchain
 langchain-community
 langchain-chroma
@@ -12,8 +16,6 @@ rank-bm25
 pypdf
 python-dotenv
 
-llm-guard
-streamlit
+llm-guard==0.3.15
 langchain-groq
 ragas
-
