@@ -12,6 +12,14 @@ try:
 except Exception:
     pass
 
+try:
+    import datasets
+    if not hasattr(datasets, "IterableDataset"):
+        from datasets.iterable_dataset import IterableDataset
+        datasets.IterableDataset = IterableDataset
+except Exception:
+    pass
+
 import os
 import io
 import time

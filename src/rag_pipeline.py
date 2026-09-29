@@ -42,8 +42,11 @@ class RAGPipeline:
 
         print("Initializing Reranker and Generator...")
         self.reranker = Reranker()
-        self.generator = LLMGenerator()
-        self.evaluator = RAGEvaluator(llm=getattr(self.generator, "llm", None))
+        try:
+            self.evaluator = RAGEvaluator(llm=getattr(self.generator, "llm", None))
+        except Exception as e:
+            print(f"Warning initializing evaluator: {e}")
+            self.evaluator = None
 
         # Check if existing documents exist in DATA_PATH
         existing_pdfs = list(Path(DATA_PATH).glob("*.pdf"))
@@ -267,12 +270,17 @@ class RAGPipeline:
         # -----------------------------
         # 8. Ragas Evaluation (Faithfulness & Groundedness)
         # -----------------------------
-        self.evaluator.llm = getattr(self.generator, "llm", None)
-        evaluation = self.evaluator.evaluate(
-            question=safe_query,
-            answer=final_answer,
-            context_chunks=documents
-        )
+        evaluation = None
+        if self.evaluator:
+            try:
+                self.evaluator.llm = getattr(self.generator, "llm", None)
+                evaluation = self.evaluator.evaluate(
+                    question=safe_query,
+                    answer=final_answer,
+                    context_chunks=documents
+                )
+            except Exception as e:
+                print(f"Evaluation warning: {e}")
 
         return {
             "answer": final_answer,

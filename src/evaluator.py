@@ -24,6 +24,14 @@ except Exception:
     pass
 
 try:
+    import datasets
+    if not hasattr(datasets, "IterableDataset"):
+        from datasets.iterable_dataset import IterableDataset
+        datasets.IterableDataset = IterableDataset
+except Exception:
+    pass
+
+try:
     from ragas import evaluate
     from ragas.metrics import faithfulness
     from datasets import Dataset
