@@ -80,8 +80,8 @@ Final Verified Answer + Citations + Evaluation Score
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/denesh248/rag.git
-cd rag
+git clone https://github.com/denesh248/prag.git
+cd prag
 ```
 
 ### 2. Set up environment
@@ -115,7 +115,7 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 1. Push this repository to GitHub.
 2. Go to [share.streamlit.io](https://share.streamlit.io) and create a **New App**.
-3. Select your repository `denesh248/rag` and branch `main`.
+3. Select your repository `denesh248/prag` and branch `main`.
 4. Set main file path: `app.py`.
 5. Under **Advanced Settings $\rightarrow$ Secrets**, enter:
    ```toml
