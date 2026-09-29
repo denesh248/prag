@@ -42,6 +42,7 @@ class RAGPipeline:
 
         print("Initializing Reranker and Generator...")
         self.reranker = Reranker()
+        self.generator = LLMGenerator()
         try:
             self.evaluator = RAGEvaluator(llm=getattr(self.generator, "llm", None))
         except Exception as e:
