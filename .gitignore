@@ -1,0 +1,29 @@
+# Environment variables and secrets
+.env
+.env.*
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Vector database storage & temporary data
+chroma_db/
+data/documents/*
+!data/documents/test_document.pdf
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Scratch and test files
+scratch/
